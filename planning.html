@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" href="./images/favicon.ico" />
-    <title>腾讯地图 - 规划路径</title>
+    <title>规划路径 - 腾讯地图</title>
   </head>
   <script type="text/javascript">
     window._TMapSecurityConfig = {
@@ -36,11 +36,13 @@
 <script>
   var map;
   function initMap() {
-    //初始化地图
     map = new TMap.Map("mapContainer", {
-      center: new TMap.LatLng(39.980619, 116.321277), //地图显示中心点
-      zoom: 14, //缩放级别
+      center: new TMap.LatLng(39.9069659960541, 116.39749745438792),
+      zoom: 15,
     });
+
+    const control = map.getControl(TMap.constants.DEFAULT_CONTROL_ID.ZOOM);
+    control.setNumVisible(true);
 
     drawPath(planningData.result.routes[0]);
   }
@@ -86,14 +88,10 @@
     map.fitBounds(latlngBounds, {
       padding: 100,
     });
-    const control = map.getControl(TMap.constants.DEFAULT_CONTROL_ID.ZOOM);
-    control.setNumVisible(true);
 
-    //创建 MultiPolyline显示折线
     var polylineLayer = new TMap.MultiPolyline({
-      id: "polyline-layer", //图层唯一标识
-      map: map, //绘制到目标地图
-      //折线样式定义
+      id: "polyline-layer",
+      map: map,
       styles: {
         style_blue: new TMap.PolylineStyle({
           color: "#3777FF", //线填充色
@@ -103,7 +101,6 @@
           lineCap: "round", //线端头方式
         }),
       },
-      //折线数据定义
       geometries: [
         {
           id: "pl_1", //折线唯一标识，删除时使用
@@ -113,7 +110,6 @@
       ],
     });
 
-    //标记起终点marker
     var marker = new TMap.MultiMarker({
       id: "marker-layer",
       map: map,
