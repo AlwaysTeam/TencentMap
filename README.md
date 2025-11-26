@@ -19,3 +19,4 @@
 
 - [地图选点](https://team.zhangsifan.com/TencentMap/index.html)
 - [车辆轨迹](https://team.zhangsifan.com/TencentMap/car_track.html)
+- [路径规划](https://team.zhangsifan.com/TencentMap/planning.html)
